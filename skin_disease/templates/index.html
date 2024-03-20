@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Welcome to Skin Detection</h1>
+    <h1>Please upload the Image File Here</h1>
+    <p>Show a file-select field which allows a file to be chosen for upload:</p>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="file" name="upload" accept=".jpg, .jpeg, .png, .jfif" />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <br />
+    <br />
+    {% if file_url %}
+    <p>Uploaded Image: <img src="{{ file_url }}" alt="Uploaded Image" /></p>
+    {% endif %} {% if disease %}
+    <p>Predicted Disease: {{ disease }}</p>
+    {% endif %} {% if medicine_recommendation %}
+    <p>Medicine Recommendation: {{ medicine_recommendation }}</p>
+    {% endif %}
+  </body>
+</html>
